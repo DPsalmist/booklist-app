@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home - MyBookList App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css"> -->
+    <!-- Bootswatch CSS -->
+    <link rel="stylesheet" href="https://bootswatch.com/5/yeti/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" 
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" 
+    crossorigin="anonymous"/>
+    <!-- Icon -->
+    <link rel="icon" class="fas fa-book-open text-info" href="#">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="display-4 text-center">
+            <i class="fas fa-book-open text-info"></i>
+            My<span class="text-info">Book</span>List App
+        </h1>
+        <!-- Alert Div Here -->
+        <!-- Form -->
+        <form id="book-form">
+            <div class="form-group">
+                <label for="title">Book Title</label>
+                <input type="text" id="title" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="author">Book Author</label>
+                <input type="text" id="author" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="isbn">Book ISBN#</label>
+                <input type="text" id="isbn" class="form-control">
+            </div> <br>
+            <input class="btn btn-outline-info btn-block" value="Add Book" type="submit">
+        </form>
+        <!-- Table -->
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN#</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="book-list">
+
+            </tbody>
+        </table>
+
+    </div>
+<script src="app.js"></script>  
+</body>
+</html>
