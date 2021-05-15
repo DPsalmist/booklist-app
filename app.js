@@ -111,24 +111,23 @@ class Store {
         books.push(book);
         // setItem takes key and string_of_value
         localStorage.setItem('books', JSON.stringify(books));
-
     }
-      // Remove Book From Store
-    static removeBook(isbn){
-        const books = Store.getBooks();
-        // Loop through to see isbn
-        books.forEach((book, index)=>{
-            // Check if retrieved book isbn = isbn
-            if(book.isbn === isbn){
-                // Remove a book index
-                books.splice(index, 1);
-            }
-        });
-        // Reset localStorage after removing a book
-        localStorage.setItem('books', JSON.stringify(books));
-    }
+//       // Remove Book From Store
+//     static removeBook(isbn){
+//         const books = Store.getBooks();
+//         // Loop through to see isbn
+//         books.forEach((book, index) => {
+//             // Check if retrieved book isbn = isbn
+//             if(book.isbn === isbn){
+//                 // Remove a book index
+//                 books.splice(index, 1);
+//             }
+//         });
+//         // Reset localStorage after removing a book
+//         localStorage.setItem('books', JSON.stringify(books));
+//     }
 
-    // Traversy own
+    // Traversy
     static removeBook(isbn) {
         const books = Store.getBooks();
     
@@ -137,7 +136,6 @@ class Store {
             books.splice(index, 1);
           }
         });
-    
         localStorage.setItem('books', JSON.stringify(books));
       }
 }
@@ -149,7 +147,6 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
     // Get form values
     const title = document.querySelector('#title').value;
-    //const isbn = document.getElementById('isbn');
     const isbn = document.querySelector('#isbn').value;
     const author = document.querySelector('#author').value;
 
@@ -179,9 +176,39 @@ document.querySelector('#book-list').addEventListener('click', (e)=> {
     UI.deleteBookFromList(e.target);
     //Remove book from store: we need to traverse the DOM
     Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
-
-    //const del = Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
-    //console.log(ded)
     // Alert for remove book
     UI.showAlert('Book Removed Successfully!', 'success');
-}) 
+});
+
+
+// Store Class: Handles Storage
+class Store {
+  static getBooks() {
+    let books;
+    if(localStorage.getItem('books') === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem('books'));
+    }
+
+    return books;
+  }
+
+  static addBook(book) {
+    const books = Store.getBooks();
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  static removeBook(isbn) {
+    const books = Store.getBooks();
+
+    books.forEach((book, index) => {
+      if(book.isbn === isbn) {
+        books.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+}
